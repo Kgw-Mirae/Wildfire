@@ -1,0 +1,111 @@
+Validation: SPARK Docker starter
+Source snapshot: 3267664
+
+PASS: Python syntax, job bootstrap, template copy, preserve existing config
+
+COMMAND: ['spread', '20250428', '--input', '/workspace/scratch/d64460ae482c/tmp/geojson', '--dry-run']
+EXIT: 0 (expected 0)
+SPARK SPREAD 2025042800 UTC
+  project        /tmp/tmpgs_x9naw
+  templates      /tmp/tmpgs_x9naw/hysp.in/SPARK-test
+  simulation     72 h (CONTROL)
+  geojson dir    /tmp/tmpgs_x9naw/hysp.data/fire-spread/geojson/2025/20250428
+  source files   1
+  hourly cache   /tmp/tmpgs_x9naw/hysp.data/fire-spread/hourly/2025/20250428/spread_hourly.txt
+  emission domain K09
+  analysis ARL   ['gdas1']
+  fallback ARL   ['gfs0p25.f'] (if recent and needed)
+  forecast cycle 00z
+  run root       /tmp/tmpgs_x9naw/hysp.run/SPARK-test
+  steps          GeoJSON -> nsfs_prep1 -> nsfs_chk1 -> nsfs_run1
+  dry-run        no input conversion, ARL download, or simulation
+2025042800 planned
+
+
+
+COMMAND: ['daily', '20250428', '--dry-run']
+EXIT: 0 (expected 0)
+SPARK FINN 2025042800 UTC
+  project        /tmp/tmpgs_x9naw
+  hysp.ini       /tmp/tmpgs_x9naw/hysp.ini
+  CONTROL        /tmp/tmpgs_x9naw/hysp.in/SPARK-test/CONTROL
+  simulation     72 h (from CONTROL)
+  emission day   20250428 (24-hour FINN inventory)
+  meteorology    prefer ['gdas1'], fallback ['gfs0p25.f']
+  forecast cycle 00z (only if forecast needed)
+  required ARL   2025042800 through 2025050100
+  emission domain K09 (named domain=K09)
+  run roots      /tmp/tmpgs_x9naw/hysp.run/SPARK-test
+  steps          gather ARL -> nsfs_prep1 -> nsfs_chk1 -> nsfs_run1
+  dry-run        no downloads or writes
+2025042800 planned
+
+
+
+COMMAND: ['product', '--help']
+EXIT: 0 (expected 0)
+usage: spark_product.py [-h] --source EXPERIMENT [EXPERIMENT ...]
+                        [--root ROOT] [--group GROUP] [--cdump CDUMP]
+                        [--lookback LOOKBACK] [--name NAME] [--bbox S W N E]
+                        [--dim NX NY | --res RES] [--cf] [--xptype XPTYPE]
+                        [--max-dim MAX_DIM]
+                        [--compression-level COMPRESSION_LEVEL] [--renew]
+                        [--dry-run] [--status] [--json]
+                        start [end]
+
+SPARK: merge exact HYSPLIT experiment directories into daily NetCDF products
+
+positional arguments:
+  start                 first target UTC date YYYYMMDD
+  end                   last target date, inclusive (default: None)
+
+options:
+  -h, --help            show this help message and exit
+  --source EXPERIMENT [EXPERIMENT ...]
+                        one or more exact hysp.run/GROUP/EXPERIMENT names;
+                        order determines product name (default: None)
+  --root ROOT           SPARK project root (default: directory containing
+                        script) (default: None)
+  --group GROUP         override group from root spark.ini (default: None)
+  --cdump CDUMP         override CDUMP filename from spark.ini (default: None)
+  --lookback LOOKBACK   number of previous simulation days (plus target day)
+                        (default: 4)
+  --name NAME           output NetCDF filename prefix (default: spark)
+  --bbox S W N E        output geographic bounds (default: [32.5, 122.0,
+                        42.55, 132.05])
+  --dim NX NY           explicit output dimensions (default: native CDUMP NX
+                        NY) (default: None)
+  --res RES             target resolution in output CRS units (default: None)
+  --cf                  CF-compliant NetCDF instead of HYGV compact (default:
+                        False)
+  --xptype XPTYPE       HYSPLIT pollutant index (default: 0)
+  --max-dim MAX_DIM
+  --compression-level COMPRESSION_LEVEL
+  --renew               regenerate existing product (default: False)
+  --dry-run             show sources and outputs without writing (default:
+                        False)
+  --status              show saved monitoring status without conversion
+                        (default: False)
+  --json                with --status, print JSON Lines (default: False)
+
+
+
+COMMAND: ['product', '20250428', '--source', 'gdas1-spread', '--lookback', '0', '--dry-run']
+EXIT: 1 (expected 1)
+PLAN 20250428 group=SPARK-test source=gdas1-spread cdumps=0 missing_inputs=1 completeness=missing
+  - gdas1-spread 20250428: missing /tmp/tmpgs_x9naw/hysp.run/SPARK-test/gdas1-spread/2025/20250428/cdump3
+  EPSG:5179 -> /tmp/tmpgs_x9naw/hysp.out/SPARK-test/gdas1-spread/2025/20250428/spark.gdas1-spread.20250428.epsg5179.nc
+  EPSG:3857 -> /tmp/tmpgs_x9naw/hysp.out/SPARK-test/gdas1-spread/2025/20250428/spark.gdas1-spread.20250428.epsg3857.nc
+  GRID: native CDUMP dimensions (NX, NY); use --dim/--res to override
+SUMMARY missing=1
+
+WARNING NO_SOURCE_CONTRIBUTION: No CDUMPs found for requested experiment gdas1-spread in the lookback window
+ERROR NO_USABLE_CDUMP: No usable HYSPLIT CDUMPs; cannot generate any NetCDF product
+
+PASS: root override guard
+
+PASS: SPREAD and FINN plan dry-run; product CLI help.
+EXPECTED BLOCK: product dry-run reports NO_USABLE_CDUMP and exits 1 because no model runs are available.
+NOT RUN: Docker build (Docker CLI unavailable).
+NOT RUN: actual HYSPLIT/MPI/ARL validation, CDUMP simulation or NetCDF output.
+Python dry-run does not establish numerical model readiness.

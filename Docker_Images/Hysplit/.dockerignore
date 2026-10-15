@@ -1,0 +1,11 @@
+**/__pycache__
+**/*.pyc
+**/.venv
+**/.git
+**/*.tar
+**/*.tar.gz
+**/*.tgz
+fire-spark/hysp.data
+fire-spark/hysp.run
+fire-spark/hysp.out
+fire-spark/hysp.ini

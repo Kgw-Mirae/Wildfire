@@ -1,0 +1,6 @@
+# Resolve and freeze versions after a successful build on the target host.
+numpy
+pyproj
+netCDF4
+rasterio
+psutil
