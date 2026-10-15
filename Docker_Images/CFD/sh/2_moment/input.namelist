@@ -1,0 +1,37 @@
+!----- NAMELIST FILE -----!
+$TIMEINFO
+N_time   = 0.
+N_delt   = 2.
+N_tend   = 9002.
+N_winter = 600.
+N_fire	 = 1800.
+N_YYDD   = 20250428
+$END
+
+$INPUTFILE
+TOPFILE = '../0_TOPO/top/cut_auto.top'
+AFCFILE = '../0_TOPO/top/fraction_coefficient.txt'
+TREEFILE = '../0_tree/result_tree/TREE.top'
+LADFILE = '../0_tree/result_tree/LAD.txt'
+FRACFILE = '../0_tree/result_tree/fraction.txt'
+FIREFILE = '../0_fireline/result_fireline/fire_intensity_timeseries.txt'
+EMISSFILE = '../0_emission/emis_result/emission_rate.txt'
+RDAPSRESULTDIR = '../1_RDAPS/txt_results'
+RESULTDIR = './results'
+$END
+
+$DOMAININFO
+N_xint = 200.
+N_yint = 200.
+N_zint = 50.
+$END
+
+$MOMENTINFO
+N_irun   = 1
+N_iconc  = 1
+N_iwind  = 1
+N_ither  = 1
+N_itree  = 1
+N_Sct    = 0.6
+N_Prt    = 0.6
+$END

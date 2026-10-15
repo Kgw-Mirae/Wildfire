@@ -1,0 +1,10 @@
+{
+  "resolution_m": 200,
+  "vertical_resolution_m": 50,
+  "kmax": 40,
+  "time_step_s": 2.0,
+  "output_interval_s": 600,
+  "forecast_duration_h": 3,
+  "forecast_duration_m": 0,
+  "domain_size_m": 20000
+}

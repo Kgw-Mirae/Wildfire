@@ -1,0 +1,11 @@
+.git
+.gitignore
+
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.log
+
+sh/data/Goejson/**
+sh/data/RDAPS-KIM/**
+sh/3_postproc/results/**

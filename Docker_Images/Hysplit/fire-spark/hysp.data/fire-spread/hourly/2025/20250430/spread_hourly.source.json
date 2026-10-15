@@ -1,0 +1,33 @@
+{
+  "created_utc": "2026-10-12T23:23:41+00:00",
+  "hourly_file": "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/hourly/2025/20250430/spread_hourly.txt",
+  "input_signature": "a15e3731dcedc35813ead5e36a694ffebf865e94bb361fc352694e1b6c93d364",
+  "settings": {
+    "spread_grid_m": 1000.0,
+    "spread_input_timezone": "Asia/Seoul",
+    "spread_origin_x": 0.0,
+    "spread_origin_y": 0.0
+  },
+  "source_files": [
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301130_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301200_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301230_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301300_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301330_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301400_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301430_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301500_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301530_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301600_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301630_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301700_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301730_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301800_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301830_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301900_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504301930_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504302000_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504302030_P.geojson",
+    "/data/blutouch/blutouch/work/model/fire-spark/hysp.data/fire-spread/geojson/2025/20250430/202504301100_202504302100_P.geojson"
+  ]
+}

@@ -1,0 +1,11 @@
+# Docker 이미지 및 압축파일
+*.tar
+*.tar.gz
+
+# CFD 생성 결과
+Docker_Images/CFD/sh/1_RDAPS/latlon_utmk_output.txt
+
+# 기타
+*.log
+.env
+__pycache__/

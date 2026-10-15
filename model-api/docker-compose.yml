@@ -1,0 +1,52 @@
+name: model-api
+
+services:
+  api:
+    image: model-api-app:1.0
+    build:
+      context: ./api-worker
+    container_name: model-api
+    restart: unless-stopped
+    command:
+      - uvicorn
+      - app.main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --workers
+      - "1"
+    env_file:
+      - .env
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      - ${JOB_HOST_ROOT}:/jobs
+    networks:
+      - model-api-network
+
+  worker:
+    image: model-api-app:1.0
+    build:
+      context: ./api-worker
+    container_name: model-worker
+    restart: unless-stopped
+    command:
+      - python
+      - -m
+      - app.worker
+    env_file:
+      - .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${JOB_HOST_ROOT}:/jobs
+      - ${CFD_FIRELINE_SOURCE_ROOT}:${CFD_FIRELINE_WORKER_ROOT}:ro,z
+      - ${CFD_DATA_TEMPLATE_HOST_ROOT}:/cfd-data-template:ro,z
+      - ${HYSPLIT_SOURCE_ROOT}:/hysplit-source:ro,z
+    networks:
+      - model-api-network
+    stop_grace_period: 60s
+
+networks:
+  model-api-network:
+    name: model-api-network
